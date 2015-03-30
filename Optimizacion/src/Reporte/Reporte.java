@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+//que guapo estoy
+
 package Reporte;
 
 /**
