@@ -27,7 +27,7 @@ public class Optimizacion {
         this.posicionBetada = new ArrayList<Integer>();
         this.zMax = false;
         double a[][] = {
-            {1,-8,-6,-7,-6,0,0,0,0},
+            {1,8,-6,17,-6,0,0,0,0},
             {0,3,8,6,4,1,0,0,300},
             {0,2,0,7,4,0,1,0,500},
             {0,3,8,0,1,0,0,1,200}
@@ -43,7 +43,7 @@ public class Optimizacion {
     public Optimizacion(int x,int y,boolean zMax){
         this.posicionBetada = new ArrayList<Integer>();
         this.zMax = zMax;
-        this.matriz = new double[x][y];
+        this.matriz = new double[y][x];
     }
     
     /**
@@ -52,11 +52,22 @@ public class Optimizacion {
     public void iteraciones(){
         int x = 0;
         int y = 0;
-        if (zMax) {
-            x = this.masNegativo(this.matriz[0]);
-            
-        }else{
-            x = this.masPositivo(this.matriz[0]);
+        while(x>=0){
+            if (zMax) {
+                x = this.masNegativo(this.matriz[0]);
+                if(x==-1){
+                    break;
+                }
+                y = this.eligirFila(x,this.matriz[0].length-1);
+                System.out.println(y);
+            }else{
+                x = this.masPositivo(this.matriz[0]);
+                if(x==-1){
+                    break;
+                }
+                y = this.eligirFila(x,this.matriz[0].length-1);
+                System.out.println(y);
+            }
             
         }
     }
@@ -114,19 +125,28 @@ public class Optimizacion {
      * @param c2 Columna de resultados (La Ultima)
      * @return La posicion del menor
      */
-    public int eligirFila(double c1[],double c2[]){
+    public int eligirFila(int x,int y){
         int p = -1;
-        double menorPositivo = 0;
-        for (int i = 1; i < c1.length; i++) {
-            if (c1[i] <= 0) {
+        double menorPositivo = Double.MAX_VALUE;
+        for (int i = 1; i < this.matriz.length; i++) {
+            System.out.println("-> "+this.matriz[i][x]+" -> "+this.matriz[i][y]);
+            double aux = this.matriz[i][y]/this.matriz[i][x];
+            
+            if (this.matriz[i][x] <= 0) {
                 continue;                
-            }else  if(menorPositivo > c2[i]/c1[i]){
-                menorPositivo = c2[i]/c1[i];
-                p = i;
+            }else if(menorPositivo >= aux){
+                //Si c2 es 0 beta esa pocicion y no entra otravez
+                if (this.matriz[i][y] == 0 && !this.posicionBetada.contains(i)) {
+                    this.posicionBetada.add(i);
+                    menorPositivo = aux;
+                    p = i;
+                    System.out.println("s");
+                }else if(this.matriz[i][y] != 0){
+                    menorPositivo = aux;
+                    p = i;
+                }
             }
         }
-        
-        
         
         return p;
     }
