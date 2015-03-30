@@ -16,6 +16,7 @@ public class Optimizacion {
 
     private double matriz[][];
     private boolean zMax;
+    public ArrayList<Variable> valor;
     /**
      * No repetir esta pociciones:
      */
@@ -24,6 +25,7 @@ public class Optimizacion {
      * constructor para hacer las pruevas con una matriz ya definida
      */
     public Optimizacion(){
+        this.valor = new ArrayList<Variable>();
         this.posicionBetada = new ArrayList<Integer>();
         this.zMax = true;
 //        double a[][] = {
@@ -38,6 +40,9 @@ public class Optimizacion {
             {0,4,6,0,1,480}};
        
         this.matriz = a;
+        this.valor.add(new Variable("Z",0));
+        this.valor.add(new Variable("X1",0));
+        this.valor.add(new Variable("X2",0));
     }
     
     /**
@@ -46,6 +51,7 @@ public class Optimizacion {
      * @param y Numero de Filas
      */
     public Optimizacion(int x,int y,boolean zMax){
+        this.valor = new ArrayList<Variable>();
         this.posicionBetada = new ArrayList<Integer>();
         this.zMax = zMax;
         this.matriz = new double[y][x];
@@ -78,6 +84,11 @@ public class Optimizacion {
                 }                    
             }
             this.operarMatriz(x, y);
+            
+            if (x <= this.valor.size() && x != 0) {
+                this.valor.get(0).setValor(this.matriz[0][this.matriz[0].length-1]);
+                this.valor.get(x).setValor(this.matriz[y][this.matriz[0].length-1]);
+            }
         }
     }
     
@@ -192,7 +203,11 @@ public class Optimizacion {
         System.out.println("\n");
     }
     public static void main(String[] args) {
-        new Optimizacion().iteraciones();
+        Optimizacion o = new Optimizacion();
+        o.iteraciones();
+        System.out.println(o.valor.get(0).getVariabloValor());
+        System.out.println(o.valor.get(1).getVariabloValor());
+        System.out.println(o.valor.get(2).getVariabloValor());
     }
     
 }
