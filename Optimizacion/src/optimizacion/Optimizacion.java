@@ -6,6 +6,8 @@
 
 package optimizacion;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Brayan
@@ -15,9 +17,14 @@ public class Optimizacion {
     private double matriz[][];
     private boolean zMax;
     /**
+     * No repetir esta pociciones:
+     */
+    private ArrayList<Integer> posicionBetada;
+    /**
      * constructor para hacer las pruevas con una matriz ya definida
      */
     public Optimizacion(){
+        this.posicionBetada = new ArrayList<Integer>();
         this.zMax = false;
         double a[][] = {
             {1,-8,-6,-7,-6,0,0,0,0},
@@ -34,6 +41,7 @@ public class Optimizacion {
      * @param y Numero de Filas
      */
     public Optimizacion(int x,int y,boolean zMax){
+        this.posicionBetada = new ArrayList<Integer>();
         this.zMax = zMax;
         this.matriz = new double[x][y];
     }
@@ -107,16 +115,20 @@ public class Optimizacion {
      * @return La posicion del menor
      */
     public int eligirFila(double c1[],double c2[]){
-        double cr[];
-        for (int i = 0; i < c1.length; i++) {
-            if (c1[i]<0) {
+        int p = -1;
+        double menorPositivo = 0;
+        for (int i = 1; i < c1.length; i++) {
+            if (c1[i] <= 0) {
                 continue;                
+            }else  if(menorPositivo > c2[i]/c1[i]){
+                menorPositivo = c2[i]/c1[i];
+                p = i;
             }
         }
         
         
         
-        return 0;
+        return p;
     }
     
     
