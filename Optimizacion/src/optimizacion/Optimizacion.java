@@ -33,9 +33,10 @@ public class Optimizacion {
 //            {0,3,8,0,1,0,0,1,200}
 //        };
         double a[][] = {
-            {1,-10,-6,0},
-            {0,6,4,360},
-            {0,4,6,480}};
+            {1,-10,-6,0,0,0},
+            {0,6,4,1,0,360},
+            {0,4,6,0,1,480}};
+       
         this.matriz = a;
     }
     
@@ -165,11 +166,12 @@ public class Optimizacion {
         boolean controlador = true;
         double pivote = this.matriz[y][x];
         for (int i = y; i < this.matriz.length; i++) {//Filas 
+            double ref = this.matriz[i][x];
             for (int j = 0; j < this.matriz[0].length; j++) {//Columnas
                 if(controlador){
                     this.matriz[i][j] = this.matriz[y][j]/pivote;
                 }else if(i != y){
-                    this.matriz[i][j] = this.matriz[i][j] - this.matriz[y][j]*this.matriz[i][j];
+                    this.matriz[i][j] = this.matriz[i][j] - this.matriz[y][j]*ref;
                 }
             }
             if (controlador) {
