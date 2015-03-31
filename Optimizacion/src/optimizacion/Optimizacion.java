@@ -101,10 +101,10 @@ public class Optimizacion {
                 }                    
             }
             this.operarMatriz(x, y);
-            Panel.tabla.add(new Tabla(this.matriz,c));
+            
             Optimizacion.listMatriz.add(new ListaIteaciones(this.matriz.clone()));
             Optimizacion.vRestrig[x] = valor.get(x).getNombre();
-            
+            Panel.tabla.add(new Tabla(this.matriz,c));
             if (x <= this.valor.size() && x != 0) {
                 this.valor.get(0).setValor(this.matriz[0][this.matriz[0].length-1]);
                 this.valor.get(x).setValor(this.matriz[y][this.matriz[0].length-1]);
