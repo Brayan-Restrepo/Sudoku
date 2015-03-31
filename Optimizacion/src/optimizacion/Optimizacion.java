@@ -7,6 +7,7 @@
 package optimizacion;
 
 import Interfaz.Panel;
+import static Interfaz.Panel.tabla;
 import Interfaz.Tabla;
 import java.util.ArrayList;
 
@@ -77,7 +78,9 @@ public class Optimizacion {
     public void iteraciones(){
         int x = 0;
         int y = 0;
+        String c[] = {"","Z","X1","X2","X3","X4","H1","H2","H3","B"};
         Optimizacion.listMatriz.add(new ListaIteaciones(this.matriz.clone()));//La inicial
+        Panel.tabla.add(new Tabla(this.matriz,c));
         while(x>=0){
             System.out.println("X -> "+x);
             System.out.println("Y -> "+y);
@@ -98,12 +101,10 @@ public class Optimizacion {
                 }                    
             }
             this.operarMatriz(x, y);
-            
+            Panel.tabla.add(new Tabla(this.matriz,c));
             Optimizacion.listMatriz.add(new ListaIteaciones(this.matriz.clone()));
             Optimizacion.vRestrig[x] = valor.get(x).getNombre();
             
-//            System.err.println("----------- 1 "+Optimizacion.listMatriz.get(0).getIteracion()[0][8]);
-//            System.err.println("----------- 1 "+Optimizacion.listMatriz.get(1).getIteracion()[0][8]);
             if (x <= this.valor.size() && x != 0) {
                 this.valor.get(0).setValor(this.matriz[0][this.matriz[0].length-1]);
                 this.valor.get(x).setValor(this.matriz[y][this.matriz[0].length-1]);

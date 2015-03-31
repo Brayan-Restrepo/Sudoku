@@ -10,8 +10,7 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JScrollPane;
-import optimizacion.Optimizacion;
-
+import optimizacion.*;
 /**
  *
  * @author Brayan
@@ -31,7 +30,7 @@ public class Panel extends javax.swing.JFrame {
         jScrollPane = new JScrollPane[Optimizacion.listMatriz.size()];
         String c[] = {"","Z","X1","X2","X3","X4","H1","H2","H3","B"};
         for (int i = 0; i < Optimizacion.listMatriz.size(); i++) {
-            tabla.add(new Tabla(Optimizacion.listMatriz.get(i).getIteracion(),c));
+           // tabla.add(new Tabla(Optimizacion.listMatriz.get(i).getIteracion(),c));
             this.jScrollPane[i] = new JScrollPane(tabla.get(i));
             cp.add(this.jScrollPane[i]);
         }
