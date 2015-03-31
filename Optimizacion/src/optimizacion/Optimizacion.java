@@ -37,7 +37,7 @@ public class Optimizacion {
         this.posicionBetada = new ArrayList<Integer>();
         this.zMax = true;
         String vr[]={"Z","H1","H2","H3"};
-        this.vRestrig = vr;
+        Optimizacion.vRestrig = vr;
         double a[][] = {
             {1,-8,-6,-7,-6,0,0,0,0},
             {0,3,8,6,4,1,0,0,300},
@@ -98,9 +98,12 @@ public class Optimizacion {
                 }                    
             }
             this.operarMatriz(x, y);
+            
             Optimizacion.listMatriz.add(new ListaIteaciones(this.matriz.clone()));
-            System.err.println("----------- 1 "+Optimizacion.listMatriz.get(0).getIteracion()[0][8]);
-            System.err.println("----------- 1 "+Optimizacion.listMatriz.get(1).getIteracion()[0][8]);
+            Optimizacion.vRestrig[x] = valor.get(x).getNombre();
+            
+//            System.err.println("----------- 1 "+Optimizacion.listMatriz.get(0).getIteracion()[0][8]);
+//            System.err.println("----------- 1 "+Optimizacion.listMatriz.get(1).getIteracion()[0][8]);
             if (x <= this.valor.size() && x != 0) {
                 this.valor.get(0).setValor(this.matriz[0][this.matriz[0].length-1]);
                 this.valor.get(x).setValor(this.matriz[y][this.matriz[0].length-1]);

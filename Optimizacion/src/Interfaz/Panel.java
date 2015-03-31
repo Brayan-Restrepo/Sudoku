@@ -29,7 +29,7 @@ public class Panel extends javax.swing.JFrame {
         GridLayout gl = new GridLayout(4,0);
         cp.setLayout(gl);
         jScrollPane = new JScrollPane[Optimizacion.listMatriz.size()];
-        String c[] = {"Z","X1","X2","X3","X4","H1","H2","H3","B"};
+        String c[] = {"","Z","X1","X2","X3","X4","H1","H2","H3","B"};
         for (int i = 0; i < Optimizacion.listMatriz.size(); i++) {
             tabla.add(new Tabla(Optimizacion.listMatriz.get(i).getIteracion(),c));
             this.jScrollPane[i] = new JScrollPane(tabla.get(i));
