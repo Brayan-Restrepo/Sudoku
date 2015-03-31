@@ -6,6 +6,8 @@
 
 package optimizacion;
 
+import Interfaz.Panel;
+import Interfaz.Tabla;
 import java.util.ArrayList;
 
 /**
@@ -17,10 +19,16 @@ public class Optimizacion {
     private double matriz[][];
     private boolean zMax;
     public ArrayList<Variable> valor;
+    public static ArrayList<ListaIteaciones> listMatriz = new ArrayList<ListaIteaciones>();;
+    Panel panel;
     /**
      * No repetir esta pociciones:
      */
     private ArrayList<Integer> posicionBetada;
+    public static String vRestrig[];
+
+    
+    
     /**
      * constructor para hacer las pruevas con una matriz ya definida
      */
@@ -28,21 +36,26 @@ public class Optimizacion {
         this.valor = new ArrayList<Variable>();
         this.posicionBetada = new ArrayList<Integer>();
         this.zMax = true;
-//        double a[][] = {
-//            {1,8,-6,17,-6,0,0,0,0},
-//            {0,3,8,6,4,1,0,0,300},
-//            {0,2,0,7,4,0,1,0,500},
-//            {0,3,8,0,1,0,0,1,200}
-//        };
+        String vr[]={"Z","H1","H2","H3"};
+        this.vRestrig = vr;
         double a[][] = {
-            {1,-10,-6,0,0,0},
-            {0,6,4,1,0,360},
-            {0,4,6,0,1,480}};
+            {1,-8,-6,-7,-6,0,0,0,0},
+            {0,3,8,6,4,1,0,0,300},
+            {0,2,0,7,4,0,1,0,500},
+            {0,3,8,0,1,0,0,1,200}
+        };
+//        double a[][] = {
+//            {1,-10,-6,0,0,0},
+//            {0,6,4,1,0,360},
+//            {0,4,6,0,1,480}};
        
         this.matriz = a;
         this.valor.add(new Variable("Z",0));
         this.valor.add(new Variable("X1",0));
         this.valor.add(new Variable("X2",0));
+        this.valor.add(new Variable("X3",0));
+        this.valor.add(new Variable("X4",0));
+        
     }
     
     /**
@@ -50,11 +63,12 @@ public class Optimizacion {
      * @param x Numero de Columnas
      * @param y Numero de Filas
      */
-    public Optimizacion(int x,int y,boolean zMax){
+    public Optimizacion(double matriz[][],boolean zMax,String vRestrig[]){
+        this.vRestrig =vRestrig;
         this.valor = new ArrayList<Variable>();
         this.posicionBetada = new ArrayList<Integer>();
         this.zMax = zMax;
-        this.matriz = new double[y][x];
+        this.matriz = matriz;
     }
     
     /**
@@ -63,7 +77,7 @@ public class Optimizacion {
     public void iteraciones(){
         int x = 0;
         int y = 0;
-        
+        Optimizacion.listMatriz.add(new ListaIteaciones(this.matriz.clone()));//La inicial
         while(x>=0){
             System.out.println("X -> "+x);
             System.out.println("Y -> "+y);
@@ -84,12 +98,17 @@ public class Optimizacion {
                 }                    
             }
             this.operarMatriz(x, y);
-            
+            Optimizacion.listMatriz.add(new ListaIteaciones(this.matriz.clone()));
+            System.err.println("----------- 1 "+Optimizacion.listMatriz.get(0).getIteracion()[0][8]);
+            System.err.println("----------- 1 "+Optimizacion.listMatriz.get(1).getIteracion()[0][8]);
             if (x <= this.valor.size() && x != 0) {
                 this.valor.get(0).setValor(this.matriz[0][this.matriz[0].length-1]);
                 this.valor.get(x).setValor(this.matriz[y][this.matriz[0].length-1]);
             }
         }
+        
+        panel = new Panel();
+        panel.setVisible(true);
     }
     
     /**
@@ -208,6 +227,11 @@ public class Optimizacion {
         System.out.println(o.valor.get(0).getVariabloValor());
         System.out.println(o.valor.get(1).getVariabloValor());
         System.out.println(o.valor.get(2).getVariabloValor());
+        System.out.println(o.valor.get(3).getVariabloValor());
+        System.out.println(o.valor.get(4).getVariabloValor());
+        System.out.println(Optimizacion.listMatriz.get(0).getIteracion()[0][8]);
+        System.out.println(Optimizacion.listMatriz.get(1).getIteracion()[0][8]);
+        System.out.println(Optimizacion.listMatriz.get(2).getIteracion()[0][8]);
     }
     
 }
