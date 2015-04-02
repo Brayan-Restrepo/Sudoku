@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import optimizacion.Coordenada;
 import optimizacion.Variable;
 
 /**
@@ -39,7 +40,7 @@ public class Interfaz extends javax.swing.JFrame {
      DefaultTableModel modelRest;
     ArrayList<Restriccion> rest=new ArrayList<Restriccion>();
     ArrayList<Restriccion> despeje=new ArrayList<Restriccion>();
-  
+    ArrayList<Coordenada> coor=new ArrayList<Coordenada>();
     public Interfaz() {
         initComponents();
         cargar();
@@ -58,9 +59,8 @@ public class Interfaz extends javax.swing.JFrame {
            
           con++;
     }
-    public void moverColumna(){
-        
-    }
+  
+   
     public void cargar(){
      String data[][]={};
      String col[]={"Nombre","Descripcion"};
@@ -90,7 +90,7 @@ public class Interfaz extends javax.swing.JFrame {
            modelRest.setValueAt(0, contRest, 1); 
            modelRest.setValueAt(0, contRest, 2);
            modelRest.setValueAt("<=", contRest, 3); 
-          contRest++;
+          
     }
     public void cargarRest(){
      String data[][]={};
@@ -403,6 +403,11 @@ public class Interfaz extends javax.swing.JFrame {
         jButton2.setText("->");
 
         jButton3.setText("Solucionar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Graficar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -671,7 +676,34 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+      
+       
+       
+        for (int i = 0; i < tablaRest.getRowCount(); i++) {
+            ArrayList<Variable> var=new ArrayList<Variable>(); 
+         for (int j = 0; j < tablaRest.getColumnCount(); j++) {
+               
+                 
+              if(j== tablaRest.getColumnCount()-1){
+               if(modelRest.getValueAt(i, j).toString().equalsIgnoreCase("<=")){
+               //  JOptionPane.showMessageDialog(null,modelRest.getValueAt(i, j).toString());
+              var.add(new Variable(modelRest.getColumnName(j),1));
+    
+             }else if(modelRest.getValueAt(i, j).toString().equalsIgnoreCase(">=")){
+             var.add(new Variable(modelRest.getColumnName(j),2));    
+             }else if(modelRest.getValueAt(i, j).toString().equalsIgnoreCase("=")){
+             var.add(new Variable(modelRest.getColumnName(j),3));    
+             }    
+              }else{
+             //     JOptionPane.showMessageDialog(null,modelRest.getValueAt(i, j).toString());
+             var.add(new Variable(modelRest.getColumnName(j),Integer.parseInt(modelRest.getValueAt(i, j).toString())));
+               }
+            
+            }
+         rest.add(new Restriccion(var));
+      
+        }
+    despejarY();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void MaximizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaximizarActionPerformed
@@ -717,24 +749,8 @@ public class Interfaz extends javax.swing.JFrame {
     private void botonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAddActionPerformed
          
         cargarDatosRest() ;
-        ArrayList<Variable> var=new ArrayList<Variable>(); 
-            for (int j = 0; j < tablaRest.getColumnCount(); j++) {
-              if(j== tablaRest.getColumnCount()-1){
-               if(modelRest.getValueAt(contRest, j).toString().equalsIgnoreCase("<=")){
-              var.add(new Variable(modelRest.getColumnName(j),1));
-    
-             }else if(modelRest.getValueAt(contRest, j).toString().equalsIgnoreCase(">=")){
-             var.add(new Variable(modelRest.getColumnName(j),2));    
-             }else if(modelRest.getValueAt(contRest, j).toString().equalsIgnoreCase("=")){
-             var.add(new Variable(modelRest.getColumnName(j),3));    
-             }    
-              }else{
-             var.add(new Variable(modelRest.getColumnName(j),Integer.parseInt(modelRest.getValueAt(contRest, j).toString())));
-               }
-            
-            }
-         rest.add(new Restriccion(var));
-         var.clear();
+       
+         contRest++;
          
     }//GEN-LAST:event_botonAddActionPerformed
 
@@ -743,6 +759,10 @@ public class Interfaz extends javax.swing.JFrame {
         contador++;
       
     }//GEN-LAST:event_botonAdd1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      JOptionPane.showMessageDialog(null,  modelRest.getValueAt(0, 1));
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -770,22 +790,55 @@ public class Interfaz extends javax.swing.JFrame {
            var.add(new Variable("B",ind1));
            var.add(new Variable("OPC",opc));
            despeje.add(new Restriccion(var));
-           var.clear();
+           
+           
+           
+         //  encontrarInterseccion(despeje.get(0),despeje.get(1));
         }
         
-   
+     JOptionPane.showMessageDialog(null, encontrarInterseccion(despeje.get(0),despeje.get(1)).getX());
     }
     
-    public double[] encontrarInterseccion(Restriccion a,Restriccion b){
+    public Coordenada encontrarInterseccion(Restriccion a,Restriccion b){
        double x,y;
-       double [] n=new double[2];
+       Coordenada nueva=null;
+       
          x=(b.variable.get(1).getValor() - a.variable.get(1).getValor())/(a.variable.get(0).getValor()-b.variable.get(0).getValor());
-         y=a.variable.get(0).getValor()*x + a.variable.get(1).getValor();
-        n[0]=x;
-        n[1]=y;
-        return n;
+         y=a.variable.get(0).getValor()*x + a.variable.get(1).getValor(); 
+         JOptionPane.showMessageDialog(null, x);
+        nueva.setX(x);
+        nueva.setY(y);
+       
+        return nueva;
         
     } 
+    public Coordenada encontrarInterseccionejex(Restriccion a){
+       double x,y;
+       Coordenada nueva=null;
+       x=0;
+       y=a.variable.get(1).getValor();
+       nueva.setX(x);
+       nueva.setY(y);
+       return nueva;
+        
+    }
+    public boolean tieneSolucion(ArrayList<Coordenada> a){
+        boolean tiene=false;
+        if(a.size()>=3){
+         tiene=true;   
+        }
+        return tiene;
+    }
+    public Coordenada encontrarInterseccionejey(Restriccion a){
+       double x,y;
+       Coordenada nueva=null;
+       x=-1*(a.variable.get(1).getValor()/a.variable.get(0).getValor());
+       y=0;
+       nueva.setX(x);
+       nueva.setY(y);
+       return nueva;
+        
+    }
     public void combinaciones(){
       int j=0;
         for (int i = 0; i < despeje.size(); i++) {
@@ -793,33 +846,51 @@ public class Interfaz extends javax.swing.JFrame {
           while(j<despeje.size()-1){
               
               j++;
-             seleccionarPuntosValidos(encontrarInterseccion(despeje.get(i),despeje.get(j)),despeje);
+              if(seleccionarPuntosValidos(encontrarInterseccion(despeje.get(i),despeje.get(j)),despeje)){
+              coor.add(encontrarInterseccion(despeje.get(i),despeje.get(j)));
+              }
+             
               System.out.println("i:"+i);
               System.out.println("j:"+j);
           }
           j=0;
         }
+        for (int i = 0; i < despeje.size(); i++) {
+        if(seleccionarPuntosValidos(encontrarInterseccionejex(despeje.get(i)),despeje)){
+         coor.add(encontrarInterseccionejex(despeje.get(i)));    
+        }
+        if(seleccionarPuntosValidos(encontrarInterseccionejey(despeje.get(i)),despeje)){
+        coor.add(encontrarInterseccionejey(despeje.get(i)));      
+        }   
+         
+        }
+      if(tieneSolucion(coor)){
+          System.out.println("Tiene solucion");   
+      }
+      else{
+          System.out.println("No tiene solucion");
+      }
         
     }
-    public boolean seleccionarPuntosValidos(double[] validar,ArrayList<Restriccion> rest){
+    public boolean seleccionarPuntosValidos(Coordenada validar,ArrayList<Restriccion> rest){
         boolean entra=false;
        
         for (int i = 0; i < rest.size(); i++) {
           if(rest.get(i).variable.get(2).getValor()==1){
-          if(validar[1]<=(rest.get(i).variable.get(0).getValor()*validar[0]+rest.get(i).variable.get(1).getValor())){
+          if(validar.getY()<=(rest.get(i).variable.get(0).getValor()*validar.getX()+rest.get(i).variable.get(1).getValor()) && validar.getY()>=0 && validar.getX()>=0){
            entra=true;  
           }else{
           break; 
           } 
               
           }else if(rest.get(i).variable.get(2).getValor()==2){
-            if(validar[1]>=(rest.get(i).variable.get(0).getValor()*validar[0]+rest.get(i).variable.get(1).getValor())){
+            if(validar.getY()>=(rest.get(i).variable.get(0).getValor()*validar.getX()+rest.get(i).variable.get(1).getValor())&& validar.getY()>=0 && validar.getX()>=0){
             entra=true;
           }else{
           break;
           }    
           }else if(rest.get(i).variable.get(2).getValor()==3){
-           if(validar[1]==(rest.get(i).variable.get(0).getValor()*validar[0]+rest.get(i).variable.get(1).getValor())){
+           if(validar.getY()==(rest.get(i).variable.get(0).getValor()*validar.getX()+rest.get(i).variable.get(1).getValor())&& validar.getY()>=0 && validar.getX()>=0){
            entra=true;  
           }else{
            break;

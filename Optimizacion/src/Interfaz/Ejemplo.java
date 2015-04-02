@@ -12,27 +12,18 @@ package Interfaz;
 public class Ejemplo {
 
     public static void main(String[] args) {
-//        int j=0;
-//        for (int i = 0; i < 4; i++) {
-//           j=i;
-//          while(j<3){
-//              
-//              j++;
-//              System.out.println("i:"+i);
-//              System.out.println("j:"+j);
-//          }
-//          j=0;
-//        }
-        for (int i = 0; i < 10; i++) {
-          if(i!=3){
-              System.out.println("si");    
-          }   else{
-          break;    
+        int j=0;
+        for (int i = 0; i < 2; i++) {
+           j=i;
+          while(j<1){
+              
+              j++;
+              System.out.println("i:"+i);
+              System.out.println("j:"+j);
           }
-         if(8<4){
-             
-         }
+          j=0;
         }
+        
    
     }
 }
