@@ -33,7 +33,7 @@ public class Interfaz extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz
      */
-    static int contador=0;
+    static int contador=1;
     double num,ind,ind1;
     int con=0,contRest=0;
     DefaultTableModel model;
@@ -45,7 +45,7 @@ public class Interfaz extends javax.swing.JFrame {
         initComponents();
         cargar();
         cargarRest();
-       setUpSportColumn(tablaRest,tablaRest.getColumnModel().getColumn(3));
+      // setUpSportColumn(tablaRest,tablaRest.getColumnModel().getColumn(3));
        this.getContentPane().setBackground(Color.white);
 
     }
@@ -55,7 +55,8 @@ public class Interfaz extends javax.swing.JFrame {
 
            model.insertRow(con, new Object[]{});
            model.setValueAt("X"+cont, con, 0);
-           model.setValueAt("variable "+cont, con, 1);  
+           model.setValueAt("variable "+cont, con, 1); 
+           
            
           con++;
     }
@@ -84,12 +85,16 @@ public class Interfaz extends javax.swing.JFrame {
         sportColumn.setCellRenderer(renderer);
     }
     public void cargarDatosRest(){
-       
-           modelRest.insertRow(contRest, new Object[]{});
-           modelRest.setValueAt(0, contRest, 0);
-           modelRest.setValueAt(0, contRest, 1); 
-           modelRest.setValueAt(0, contRest, 2);
-           modelRest.setValueAt("<=", contRest, 3); 
+         setUpSportColumn(tablaRest,tablaRest.getColumnModel().getColumn(modelRest.getColumnCount()-1));
+          modelRest.insertRow(contRest, new Object[]{});
+          for (int i = 0; i < modelRest.getColumnCount()-1; i++) {
+          modelRest.setValueAt(0, contRest, i);  
+          }
+          modelRest.setValueAt("<=", contRest, modelRest.getColumnCount()-1);  
+        //   modelRest.setValueAt(0, contRest, 0);
+         //  modelRest.setValueAt(0, contRest, 1); 
+          // modelRest.setValueAt(0, contRest, 2);
+         //  modelRest.setValueAt("<=", contRest, 3); 
           
     }
     public void cargarRest(){
@@ -480,10 +485,10 @@ public class Interfaz extends javax.swing.JFrame {
         tablaRest.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         tablaRest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
-                "X1", "X2", "B", "OPC"
+
             }
         ));
         jScrollPane4.setViewportView(tablaRest);
@@ -757,7 +762,38 @@ public class Interfaz extends javax.swing.JFrame {
     private void botonAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdd1ActionPerformed
         cargarDatos(contador);
         contador++;
-      
+        int pos1=0,pos2=0;
+      //  JOptionPane.showMessageDialog(null, model.getRowCount());
+        try{
+        if( model.getRowCount()>2){
+         modelRest.addColumn(model.getValueAt(model.getRowCount()-1, 0));
+         ArrayList<String> arreglo=new ArrayList<String>();
+            for (int i = 0; i <modelRest.getColumnCount(); i++) {
+             if(modelRest.getColumnName(i).equalsIgnoreCase("b")){
+             pos1=i;    
+             }else if(modelRest.getColumnName(i).equalsIgnoreCase("opc")){
+             pos2=i;   
+            }
+             arreglo.add(modelRest.getColumnName(i));
+            }
+            int dis=modelRest.getColumnCount()-pos2-1;
+           // JOptionPane.showMessageDialog(null, dis);
+            for (int i = 2; i <= dis+1; i++) {
+            arreglo.set((modelRest.getColumnCount()-1)-i,modelRest.getColumnName(modelRest.getColumnCount()-(i-1)));    
+            }
+   
+           arreglo.set(pos1+dis, "B");
+           arreglo.set(pos2+dis, "OPC");
+           modelRest.setColumnIdentifiers(arreglo.toArray());
+       
+        
+        }    
+        }catch(Exception e){
+            
+        }
+        
+        
+       
     }//GEN-LAST:event_botonAdd1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
