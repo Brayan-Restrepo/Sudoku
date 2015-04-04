@@ -36,6 +36,7 @@ public class Interfaz extends javax.swing.JFrame {
     static int contador=1;
     double num,ind,ind1;
     int con=0,contRest=0;
+    double y;
     DefaultTableModel model;
      DefaultTableModel modelRest;
     ArrayList<Restriccion> rest=new ArrayList<Restriccion>();
@@ -114,6 +115,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollBar2 = new javax.swing.JScrollBar();
+        grupo = new javax.swing.ButtonGroup();
         panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -136,12 +138,9 @@ public class Interfaz extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        datos1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -155,7 +154,6 @@ public class Interfaz extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaRest = new javax.swing.JTable();
-        jProgressBar1 = new javax.swing.JProgressBar();
         jPanel7 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         botonAdd1 = new javax.swing.JButton();
@@ -259,7 +257,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addComponent(Maximizar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRadioButton2)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -297,7 +295,7 @@ public class Interfaz extends javax.swing.JFrame {
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGap(34, 34, 34)
                                     .addComponent(jLabel3)
@@ -327,7 +325,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -335,50 +333,35 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Funcion Objetivo");
 
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel14.setText("Zmin-max");
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel13.setText("X1");
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel15.setText("X2");
+        datos1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        datos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nombre", "Descripcion"
+            }
+        ));
+        jScrollPane5.setViewportView(datos1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel14)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel13)
-                        .addGap(51, 51, 51)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(36, 36, 36))))
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 170, Short.MAX_VALUE))
                     .addComponent(jSeparator1))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,16 +370,12 @@ public class Interfaz extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel15))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(39, 39, 39)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(39, Short.MAX_VALUE)))
         );
 
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -502,7 +481,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -589,8 +568,8 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addComponent(botonAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botonDelete1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -636,7 +615,7 @@ public class Interfaz extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -648,33 +627,27 @@ public class Interfaz extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(34, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(273, 273, 273))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -701,7 +674,7 @@ public class Interfaz extends javax.swing.JFrame {
              }    
               }else{
              //     JOptionPane.showMessageDialog(null,modelRest.getValueAt(i, j).toString());
-             var.add(new Variable(modelRest.getColumnName(j),Integer.parseInt(modelRest.getValueAt(i, j).toString())));
+             var.add(new Variable(modelRest.getColumnName(j),Double.parseDouble(modelRest.getValueAt(i, j).toString())));
                }
             
             }
@@ -709,6 +682,10 @@ public class Interfaz extends javax.swing.JFrame {
       
         }
     despejarY();
+    combinaciones();
+        for (int i = 0; i < coor.size(); i++) {
+          JOptionPane.showMessageDialog(null, coor.get(i).getX()+ ","+coor.get(i).getY());
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void MaximizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaximizarActionPerformed
@@ -809,22 +786,30 @@ public class Interfaz extends javax.swing.JFrame {
         for (int i = 0; i <rest.size(); i++) {
           opc=rest.get(i).variable.get(3).getValor();
         ArrayList<Variable> var=new ArrayList<Variable>(); 
-            if(rest.get(i).variable.get(1).getValor()!=0 ){
+              if(rest.get(i).variable.get(0).getValor()!=0){
+             if(rest.get(i).variable.get(1).getValor()!=0 ){
             num= rest.get(i).variable.get(1).getValor()*-1;
             
             }else{
               num=0;   
-            }
-              if(rest.get(i).variable.get(0).getValor()!=0 && rest.get(i).variable.get(0).getValor()!=1){
+            }     
+           }else{
+            num=1;      
+              }
+            
+              if(rest.get(i).variable.get(0).getValor()!=0){
+              y=1;
              ind=num/rest.get(i).variable.get(0).getValor();
              ind1=rest.get(i).variable.get(2).getValor()/rest.get(i).variable.get(0).getValor();
               }else{
-              ind=num;
-              ind1=rest.get(i).variable.get(2).getValor();
+             y=0;
+             ind=num;
+             ind1=rest.get(i).variable.get(2).getValor()/rest.get(i).variable.get(1).getValor();
               }
            var.add(new Variable("X2",ind));
            var.add(new Variable("B",ind1));
            var.add(new Variable("OPC",opc));
+           var.add(new Variable("X1",y));
            despeje.add(new Restriccion(var));
            
            
@@ -832,29 +817,49 @@ public class Interfaz extends javax.swing.JFrame {
          //  encontrarInterseccion(despeje.get(0),despeje.get(1));
         }
         
-     JOptionPane.showMessageDialog(null, encontrarInterseccion(despeje.get(0),despeje.get(1)).getX());
+     //JOptionPane.showMessageDialog(null, encontrarInterseccionejey(despeje.get(0)).getX());
+    // JOptionPane.showMessageDialog(null, encontrarInterseccion(despeje.get(0),despeje.get(1)).getY());
     }
     
     public Coordenada encontrarInterseccion(Restriccion a,Restriccion b){
        double x,y;
-       Coordenada nueva=null;
-       
-         x=(b.variable.get(1).getValor() - a.variable.get(1).getValor())/(a.variable.get(0).getValor()-b.variable.get(0).getValor());
+       Coordenada nueva;
+       if(a.variable.get(3).getValor()!=0 && b.variable.get(3).getValor()!=0){
+       x=(b.variable.get(1).getValor() - a.variable.get(1).getValor())/(a.variable.get(0).getValor()-b.variable.get(0).getValor());
          y=a.variable.get(0).getValor()*x + a.variable.get(1).getValor(); 
-         JOptionPane.showMessageDialog(null, x);
-        nueva.setX(x);
-        nueva.setY(y);
+        nueva=new Coordenada(x,y);    
+       return nueva;
+       }else if(a.variable.get(3).getValor()!=0 && b.variable.get(3).getValor()==0){
+       x=b.variable.get(1).getValor();
+       y=a.variable.get(0).getValor()*x + a.variable.get(1).getValor(); 
+       nueva=new Coordenada(x,y); 
+       return nueva;
+       }else if(a.variable.get(3).getValor()==0 && b.variable.get(3).getValor()!=0){
+       x=a.variable.get(1).getValor();
+       y=b.variable.get(0).getValor()*x + b.variable.get(1).getValor();  
+       nueva=new Coordenada(x,y); 
+       return nueva;
+       }
+        x=0;
+       y=0;
+       nueva=new Coordenada(x,y);   
        
         return nueva;
         
     } 
     public Coordenada encontrarInterseccionejex(Restriccion a){
        double x,y;
-       Coordenada nueva=null;
-       x=0;
+       Coordenada nueva;
+       if(a.variable.get(3).getValor()!=0){
+        x=0;
        y=a.variable.get(1).getValor();
-       nueva.setX(x);
-       nueva.setY(y);
+       nueva=new Coordenada(x,y);    
+       }else{
+        x=0;
+       y=0;
+       nueva=new Coordenada(x,y);    
+       }
+       
        return nueva;
         
     }
@@ -867,11 +872,17 @@ public class Interfaz extends javax.swing.JFrame {
     }
     public Coordenada encontrarInterseccionejey(Restriccion a){
        double x,y;
-       Coordenada nueva=null;
+       Coordenada nueva;
+       if(a.variable.get(3).getValor()!=0){
        x=-1*(a.variable.get(1).getValor()/a.variable.get(0).getValor());
        y=0;
-       nueva.setX(x);
-       nueva.setY(y);
+       nueva=new Coordenada(x,y);   
+       }else{
+       y=0;
+       x=a.variable.get(1).getValor();
+       nueva=new Coordenada(x,y);  
+       }
+      
        return nueva;
         
     }
@@ -977,15 +988,14 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton botonDelete;
     private javax.swing.JButton botonDelete1;
     private javax.swing.JTable datos;
+    private javax.swing.JTable datos1;
+    private javax.swing.ButtonGroup grupo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1007,13 +1017,13 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollBar jScrollBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1021,8 +1031,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel panel;
     private javax.swing.JTable tablaRest;
     // End of variables declaration//GEN-END:variables

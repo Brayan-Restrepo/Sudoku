@@ -12,11 +12,25 @@ package optimizacion;
 public class Coordenada {
    double x;
    double y;
-   Coordenada(double x,double y){
+   double z;
+  public Coordenada(double x,double y){
    this.x=x;
    this.y=y;
    }
+   public Coordenada(double x,double y,double z){
+   this.x=x;
+   this.y=y;
+   this.z=z;
+   }
 
+    public double getZ() {
+        return z;
+    }
+
+    public void setZ(double z) {
+        this.z = z;
+    }
+  
     public double getX() {
         return x;
     }
