@@ -789,7 +789,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void botonDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDelete1ActionPerformed
        model.removeRow(model.getRowCount()-1);
+      
        con--;
+       contador--;
        
     }//GEN-LAST:event_botonDelete1ActionPerformed
 
