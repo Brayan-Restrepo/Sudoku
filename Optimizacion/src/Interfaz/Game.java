@@ -292,18 +292,20 @@ public class Game extends JPanel {
                if(valoresY.size()>0){
                  for (int i = 0; i < valoresY.size(); i++) {
                   if(valoresY.get(i).getZ()==1){
-                 g2d.setColor(Color.black);
+                // g2d.setColor(Color.black);
+                 g2d.setColor(color.get(i));
                  g2d.drawLine((int)valoresY.get(i).getX(), (int)valoresY.get(i).getY(), (int)(valoresY.get(i).getX()+1), (int)(valoresY.get(i).getY()-coe.get(i).getX()));               
                 // g2d.drawLine((int)(valoresY.get(i).getX()+1), (int)(valoresY.get(i).getY()-coe.get(i).getX()), (int)(valoresY.get(i).getX()+1-20), (int)(valoresY.get(i).getY()-coe.get(i).getX()-20));
                  // g2d.draw3DRect((int)valoresY.get(i).getX(), (int)valoresY.get(i).getY(), 10, 10, true);
                   // g2d.setColor(Color.red);
-                  g2d.setColor(color.get(i));
-                 g2d.drawLine((int)(valoresY.get(i).getX()+1), (int)(valoresY.get(i).getY()-coe.get(i).getX()), (int)(valoresY.get(i).getX()+1-20), (int)(valoresY.get(i).getY()-coe.get(i).getX()-100));
+                 // g2d.setColor(color.get(i));
+                // g2d.drawLine((int)(valoresY.get(i).getX()+1), (int)(valoresY.get(i).getY()-coe.get(i).getX()), (int)(valoresY.get(i).getX()+1-20), (int)(valoresY.get(i).getY()-coe.get(i).getX()-100));
                   }else if(valoresY.get(i).getZ()==2){
-              g2d.setColor(Color.black); 
+                       g2d.setColor(color.get(i));
+                    //  g2d.setColor(Color.black); 
               g2d.drawLine((int)valoresY.get(i).getX(), (int)valoresY.get(i).getY(), (int)(valoresY.get(i).getX()+1), (int)(valoresY.get(i).getY()+coe.get(i).getX()));       
-               g2d.setColor(color.get(i));
-              g2d.drawLine((int)(valoresY.get(i).getX()+1), (int)(valoresY.get(i).getY()+coe.get(i).getX()), (int)(valoresY.get(i).getX()+1+20), (int)(valoresY.get(i).getY()+coe.get(i).getX()-100));
+             //  g2d.setColor(color.get(i));
+             // g2d.drawLine((int)(valoresY.get(i).getX()+1), (int)(valoresY.get(i).getY()+coe.get(i).getX()), (int)(valoresY.get(i).getX()+1+20), (int)(valoresY.get(i).getY()+coe.get(i).getX()-100));
 
                   }
               
@@ -315,8 +317,8 @@ public class Game extends JPanel {
                   for (int i = 0; i < valoresY1.size(); i++) {
                  g2d.setColor(Color.black);
                  g2d.drawLine((int)valoresY1.get(i).getX(), (int)valoresY1.get(i).getY(), (int)(valoresY1.get(i).getX()+1), (int)valoresY1.get(i).getY());
-                 g2d.setColor(color.get(i+3));
-                 g2d.drawLine((int)(valoresY1.get(i).getX()+1), (int)valoresY1.get(i).getY(), (int)(valoresY1.get(i).getX()+1+20), (int)(valoresY1.get(i).getY()+100));
+               //  g2d.setColor(color.get(i+3));
+                /// g2d.drawLine((int)(valoresY1.get(i).getX()+1), (int)valoresY1.get(i).getY(), (int)(valoresY1.get(i).getX()+1+20), (int)(valoresY1.get(i).getY()+100));
 
                   }
               }
