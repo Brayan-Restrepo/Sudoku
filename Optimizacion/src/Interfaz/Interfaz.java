@@ -548,6 +548,11 @@ public class Interfaz extends javax.swing.JFrame {
                 botonDelete1MouseExited(evt);
             }
         });
+        botonDelete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDelete1ActionPerformed(evt);
+            }
+        });
 
         datos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         datos.setModel(new javax.swing.table.DefaultTableModel(
@@ -781,6 +786,12 @@ public class Interfaz extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
       JOptionPane.showMessageDialog(null,  modelRest.getValueAt(0, 1));
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void botonDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDelete1ActionPerformed
+       model.removeRow(model.getRowCount()-1);
+       con--;
+       
+    }//GEN-LAST:event_botonDelete1ActionPerformed
 
     /**
      * @param args the command line arguments
