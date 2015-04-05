@@ -3,20 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interfaz;
+
+import java.util.ArrayList;
+import optimizacion.Coordenada;
+import optimizacion.Variable;
 
 /**
  *
- * @author Brayan
+ * @author Sergio
  */
-public class Principal extends javax.swing.JFrame {
+public class Ejemplo extends javax.swing.JFrame {
 
     /**
-     * Creates new form Principal
+     * Creates new form Ejemplo
      */
-    public Principal() {
+    public Ejemplo() {
         initComponents();
+        ArrayList<Restriccion> a=new ArrayList<Restriccion>();
+    ArrayList<Variable> var=new ArrayList<Variable>();
+    var.add(new Variable("2",200));
+     var.add(new Variable("2",500));
+      var.add(new Variable("2",1));
+       var.add(new Variable("2",1));
+       ArrayList<Variable> var1=new ArrayList<Variable>();
+    var1.add(new Variable("2",800));
+     var1.add(new Variable("2",40));
+      var1.add(new Variable("2",1));
+       var1.add(new Variable("2",1));
+            ArrayList<Variable> var2=new ArrayList<Variable>();
+    var2.add(new Variable("2",1));
+     var2.add(new Variable("2",4));
+      var2.add(new Variable("2",1));
+       var2.add(new Variable("2",0));
+     a.add(new Restriccion(var));
+     a.add(new Restriccion(var1));
+      a.add(new Restriccion(var2));
+       ArrayList<Coordenada> n=new ArrayList<Coordenada>();
+       n.add(new Coordenada(200,4));
+        this.jLabel1.setIcon( new XYLineChart( this.getContentPane().getSize(),a,n ) );
+        this.jLabel1.setText("");
     }
 
     /**
@@ -28,24 +54,30 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * @param args the command line arguments
+//     * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -61,24 +93,25 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ejemplo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ejemplo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ejemplo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ejemplo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                new Ejemplo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
