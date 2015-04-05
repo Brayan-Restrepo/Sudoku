@@ -426,6 +426,8 @@
                       <Component id="jScrollPane5" min="-2" pref="294" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
 =======
                   </Group>
               </Group>
@@ -465,10 +467,32 @@
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" pref="44" max="-2" attributes="0"/>
                       <EmptySpace pref="57" max="32767" attributes="0"/>
+>>>>>>> parent of 582648f... Hay nonnono
                   </Group>
               </Group>
           </Group>
         </DimensionLayout>
+<<<<<<< HEAD
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace pref="98" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="jScrollPane5" min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace pref="57" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+=======
+>>>>>>> parent of 582648f... Hay nonnono
 =======
 >>>>>>> parent of 582648f... Hay nonnono
       </Layout>
@@ -806,6 +830,7 @@
                   </Group>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 </DimensionLayout>
               </Layout>
               <SubComponents>
@@ -925,6 +950,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <EmptySpace min="0" pref="896" max="32767" attributes="0"/>
+=======
+                  <EmptySpace max="32767" attributes="0"/>
+>>>>>>> parent of 582648f... Hay nonnono
 =======
                   <EmptySpace max="32767" attributes="0"/>
 >>>>>>> parent of 582648f... Hay nonnono
